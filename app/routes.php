@@ -33,3 +33,5 @@ Route::get('users1', 'HomeController@showWelcome');
 Route::get('user/{name?}', function ($name = null) {
     return $name;
 });
+
+Route::any('signup', 'RegisterController@showFormRegister');
