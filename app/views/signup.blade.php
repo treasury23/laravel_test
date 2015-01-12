@@ -1,16 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-</head>
-<body>
-<div class="welcome">
-    <form action="#" method="POST">
-        <input type="text" placeholder="Enter Name" name="login">
-        <input type="email" placeholder="Enter Email" name="email">
-        <button type="submit">OK</button>
-    </form>
-</div>
-</body>
-</html>
+@extends('layout')
+@section('content')
+
+    {{ Form::open(array('url' => 'signup')) }}
+        <?php
+        echo Form::label('name', 'Login');
+        echo Form::text('username');
+        echo Form::label('email', 'E-mail');
+        echo Form::text('email');
+        echo Form::label('password', 'Password');
+        echo Form::password('password');
+        echo Form::submit('OK');
+        ?>
+    {{ Form::close() }}
+
+@stop
+
