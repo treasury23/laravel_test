@@ -2,22 +2,21 @@
 
 class RegisterController extends BaseController {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | You may wish to use controllers instead of, or in addition to, Closure
-    | based routes. That's great! Here is an example controller method to
-    | get you started. To route to this controller, just add the route:
-    |
-    |	Route::get('/', 'HomeController@showWelcome');
-    |
-    */
-
     public function showFormRegister()
     {
-        return View::make('signup');
+        if ($this->request->isMethod('post')) {
+
+            $user = new User;
+            $user->name = 'vitya';
+            $user->email = 'treasury23@gmail.com';
+            $user->password = '123456';
+            $user->save();
+
+        }
+
+        if ($this->request->isMethod('get')) {
+            return View::make('signup');
+        }
     }
 
 }
