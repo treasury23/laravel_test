@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('vitya-HP-655-Notebook-PC'),
+	'local' => array('silver-VirtualBox'),
 
 ));
 
