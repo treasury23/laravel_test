@@ -5,7 +5,12 @@
 @section('content')
 
 <div class="form-signup">
-    {{ $errors->first('email') }}
+    @if ($errors->any())
+    <ul>
+        {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+    </ul>
+    @endif
+
     {{ Form::open(array('url' => 'signup')) }}
 
         {{ Form::text('username', null,  array('class' => 'form-control', 'placeholder' => 'Логин')) }}
