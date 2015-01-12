@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="form-signup">
+    {{ $errors->first('email') }}
     {{ Form::open(array('url' => 'signup')) }}
 
         {{ Form::text('username', null,  array('class' => 'form-control', 'placeholder' => 'Логин')) }}

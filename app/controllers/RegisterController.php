@@ -6,12 +6,35 @@ class RegisterController extends BaseController {
     {
         if (Request::isMethod('post')) {
 
+            $name = Input::get('name');
+            $email = Input::get('email');
+            $password = Input::get('password');
+
+            $validator = Validator::make(
+                array(
+                    'name' => $name,
+                    'email' => $email,
+                    'password' => $password
+                ),
+                array(
+                    'name' => 'required',
+                    'password' => 'required|min:8',
+                    'email' => 'required|email|unique:users'
+                )
+            );
+
+            if ($validator->fails()) {
+                return Redirect::to('signup')->withErrors($validator);
+
+            }else{
+
             $user = new User;
-            $user->name = 'vitya';
-            $user->email = 'treasury23@gmail.com';
-            $user->password = '123456';
+            $user->name = $name;
+            $user->email = $email;
+            $user->password = $password;
             $user->save();
             return 'SUCCESS';
+            }
         }
         else{
             return View::make('signup');
