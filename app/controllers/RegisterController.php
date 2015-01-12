@@ -4,17 +4,16 @@ class RegisterController extends BaseController {
 
     public function showFormRegister()
     {
-        if ($this->request->isMethod('post')) {
+        if (Request::isMethod('post')) {
 
             $user = new User;
             $user->name = 'vitya';
             $user->email = 'treasury23@gmail.com';
             $user->password = '123456';
             $user->save();
-
+            return 'SUCCESS';
         }
-
-        if ($this->request->isMethod('get')) {
+        else{
             return View::make('signup');
         }
     }

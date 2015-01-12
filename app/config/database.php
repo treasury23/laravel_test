@@ -46,7 +46,7 @@ return array(
         'mysql' => array(
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'lavarel',
+            'database'  => 'laravel',
             'username'  => 'root',
             'password'  => '123456',
             'charset'   => 'utf8',
