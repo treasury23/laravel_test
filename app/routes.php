@@ -35,3 +35,10 @@ Route::get('user/{name?}', function ($name = null) {
 });
 
 Route::any('signup', 'RegisterController@showFormRegister');
+
+Route::group(array('before' => 'auth'), function () {
+
+    Route::get('profile', function () {
+        return 'profile here';
+    });
+});
