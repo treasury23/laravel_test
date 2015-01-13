@@ -28,6 +28,9 @@ class RegisterController extends BaseController {
 
             }else{
 
+                $password = Crypt::encrypt($password);
+                //$decrypted = Crypt::decrypt($encryptedValue);
+
             $user = new User;
             $user->name = $name;
             $user->email = $email;
