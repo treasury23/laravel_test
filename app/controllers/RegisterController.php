@@ -44,4 +44,13 @@ class RegisterController extends BaseController {
         }
     }
 
+    public function showFormLogin()
+    {
+        return View::make('login');
+
+        //if (Request::isMethod('post')) {
+
+        //}
+    }
+
 }
