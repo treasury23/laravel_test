@@ -11,3 +11,4 @@ Thumbs.db
 /app/config/database.php
 /app/config/app.php
 /bootstrap/start.php
+_ide_helper.php

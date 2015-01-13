@@ -24,7 +24,7 @@ class RegisterController extends BaseController {
             );
 
             if ($validator->fails()) {
-                return Redirect::to('signup')->withErrors($validator);
+                return Redirect::to('signup')->withInput()->withErrors($validator);
 
             }else{
 
