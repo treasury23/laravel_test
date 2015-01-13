@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-    User profile
+    {{ trans('messages.title') }}
 @endsection
 @section('content')
 
@@ -13,10 +13,10 @@
 
     {{ Form::open(array('url' => 'signup')) }}
 
-        {{ Form::text('username', null,  array('class' => 'form-control', 'placeholder' => 'Логин')) }}
-        {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'E-mail')) }}
-        {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Пароль')) }}
-        <div style="padding:20px">{{ Form::submit('Отправить', array('class' => 'btn btn-lg btn-primary btn-block')) }}</div>
+        {{ Form::text('username', null,  array('class' => 'form-control', 'placeholder' => Lang::get('messages.login'))) }}
+        {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => Lang::get('messages.email'))) }}
+        {{ Form::password('password', array('class' => 'form-control', 'placeholder' => Lang::get('messages.password'))) }}
+        <div style="padding:20px">{{ Form::submit(Lang::get('messages.submit'), array('class' => 'btn btn-lg btn-primary btn-block')) }}</div>
 
     {{ Form::close() }}
 </div>
