@@ -46,11 +46,17 @@ class RegisterController extends BaseController {
 
     public function showFormLogin()
     {
-        return View::make('login');
 
-        //if (Request::isMethod('post')) {
+        if (Request::isMethod('post')) {
+            $email = Input::get('email');
+            $password = Input::get('password');
 
-        //}
+            if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+                return Redirect::intended('profile');
+            }
+
+        }else{
+            return View::make('login');
+        }
     }
-
 }

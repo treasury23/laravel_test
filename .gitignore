@@ -12,3 +12,4 @@ Thumbs.db
 /app/config/app.php
 /bootstrap/start.php
 _ide_helper.php
+/app/database/migrations/*

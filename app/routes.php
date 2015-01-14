@@ -45,6 +45,3 @@ Route::group(array('before' => 'auth'), function () {
 });
 
 Route::any('login', 'RegisterController@showFormLogin');
-
-
-
