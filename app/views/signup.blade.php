@@ -3,13 +3,9 @@
     {{ trans('messages.title') }}
 @endsection
 @section('content')
-
+@include('errors', array('errors'=>$errors))
 <div class="form-signup">
-    @if ($errors->any())
-    <ul>
-        {{ implode('', $errors->all('<li class="error">:message</li>')) }}
-    </ul>
-    @endif
+
 
     {{ Form::open(array('url' => 'signup')) }}
 

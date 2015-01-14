@@ -38,10 +38,10 @@ Route::any('signup', 'RegisterController@showFormRegister');
 
 Route::group(array('before' => 'auth'), function () {
 
-    Route::get('profile', function () {
-        return 'profile here';
-    });
+    Route::get('profile', 'RegisterController@profile');
 
 });
 
 Route::any('login', 'RegisterController@showFormLogin');
+
+Route::get('logout', 'RegisterController@logout');

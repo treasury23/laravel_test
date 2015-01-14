@@ -3,7 +3,8 @@
     {{ trans('messages.title') }}
 @endsection
 @section('content')
-{{ Form::open(array('url' => 'profile')) }}
+@include('errors', array('errors'=>$errors))
+{{ Form::open(array('url' => 'login')) }}
 
         {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => Lang::get('messages.email'))) }}
         {{ Form::password('password', array('class' => 'form-control', 'placeholder' => Lang::get('messages.password'))) }}
