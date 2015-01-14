@@ -66,7 +66,7 @@ class RegisterController extends BaseController {
     public function logout()
     {
         Auth::logout();
-        return Redirect::to('signup');
+        return Redirect::to('/');
     }
 
     public function profile()

@@ -16,32 +16,17 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-//Route::get('users', function () {
-//    return View::make('users');
-//});
-
-Route::get('users', function () {
-    $users = User::all();
-
-    return View::make('users')->with('users', $users);
-});
-
-Route::get('users1', 'HomeController@showWelcome');
-
-
-
-Route::get('user/{name?}', function ($name = null) {
-    return $name;
-});
-
 Route::any('signup', 'RegisterController@showFormRegister');
 
 Route::group(array('before' => 'auth'), function () {
 
     Route::get('profile', 'RegisterController@profile');
+    Route::any('add', 'PublicationController@addPublication');
 
 });
 
 Route::any('login', 'RegisterController@showFormLogin');
 
 Route::get('logout', 'RegisterController@logout');
+
+
