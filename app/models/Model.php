@@ -7,4 +7,9 @@ class Model extends Eloquent {
         return $this->belongsTo('Brand');
     }
 
+    public function publications()
+    {
+        return $this->hasMany('Publication');
+    }
+
 }

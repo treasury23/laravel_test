@@ -7,4 +7,9 @@ class City extends Eloquent {
         return $this->belongsTo('Area');
     }
 
+    public function publications()
+    {
+        return $this->hasMany('Publication');
+    }
+
 }
