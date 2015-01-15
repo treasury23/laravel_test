@@ -9,15 +9,14 @@
             $areas[$area->id] = $area->name;
         }
 
-    $brands = array(0 => 'Выберите модель');
+    $brands = array(0 => 'Выберите марку');
           foreach (Brand::get(array('id', 'name')) as $brand) {
               $brands[$brand->id] = $brand->name;
           }
 
     $cities = array(0 => 'Выберите город');
-            foreach (City::get(array('id', 'name')) as $city) {
-                $cities[$city->id] = $city->name;
-            }
+    $models = array(0 => 'Выберите модель');
+
 ?>
 
     {{ Form::open(array('url' => 'add')) }}
@@ -31,8 +30,12 @@
             {{ Form::select('city_id', $cities) }}
         </div>
         <div>
-            {{ Form::label('brand_id', 'Модель:') }}
+            {{ Form::label('brand_id', 'Марка:') }}
             {{ Form::select('brand_id', $brands) }}
+        </div>
+        <div>
+            {{ Form::label('model_id', 'Модель:') }}
+            {{ Form::select('model_id', $models) }}
         </div>
         <div>
             {{ Form::label('engine', 'Объем двигателя:') }}
