@@ -2,7 +2,7 @@
 
 class Area extends Eloquent {
 
-    public function сities()
+    public function cities()
     {
         return $this->hasMany('City');
     }
