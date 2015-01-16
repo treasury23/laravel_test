@@ -1,13 +1,35 @@
 $( document ).ready(function() {
-    $('#area_id').change(function(e){
-        var id = $(this).val();
 
+    var getDataSelect = function(url, select){
         $.ajax({
-            url: '/getCities/'+id,             // указываем URL и
-            dataType : "json",                     // тип загружаемых данных
-            success: function (data) { // вешаем свой обработчик на функцию success
-
+            url: url,
+            dataType : "json",
+            success: function (data) {
+                console.log(data);
+                $(select).html(data.html);
+            },
+            failure : function () {
+                var el = $('<div id="error">').text('Error');
+                $(select).append(el);
             }
         });
-    })
+    }
+
+    $('#area_id').change(function(){
+        var id = $(this).val();
+        if (id > 0){
+            getDataSelect('/getCities/'+id, '#city_id');
+        }else{
+            $('#city_id option[value]').remove();
+        }
+    });
+
+    $('#brand_id').change(function(e){
+        var id = $(this).val();
+        if (id > 0){
+            getDataSelect('/getModels/'+id, '#model_id');
+        }else{
+            $('#model_id option[value]').remove();
+        }
+    });
 });

@@ -23,19 +23,19 @@
 
         <div>
             {{ Form::label('area_id', 'Область:') }}
-            {{ Form::select('area_id', $areas) }}
+            {{ Form::select('area_id', $areas, null, array('required' => 'required')) }}
         </div>
         <div>
             {{ Form::label('city_id', 'Город:') }}
-            {{ Form::select('city_id', $cities) }}
+            {{ Form::select('city_id', $cities, null, array('required' => 'required')) }}
         </div>
         <div>
             {{ Form::label('brand_id', 'Марка:') }}
-            {{ Form::select('brand_id', $brands) }}
+            {{ Form::select('brand_id', $brands, null, array('required' => 'required')) }}
         </div>
         <div>
             {{ Form::label('model_id', 'Модель:') }}
-            {{ Form::select('model_id', $models) }}
+            {{ Form::select('model_id', $models, null, array('required' => 'required')) }}
         </div>
         <div>
             {{ Form::label('engine', 'Объем двигателя:') }}

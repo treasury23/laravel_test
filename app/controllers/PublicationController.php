@@ -12,8 +12,15 @@ class PublicationController extends BaseController {
 
     public function getCities($id)
     {
-        $cities = Area::find($id)->cities;
-        $html = View::make('select')->with(array('cities' => $cities));
-        return Response::json(array('html' => json_encode($html)));
+        $options = Area::find($id)->cities;
+        $html = View::make('select_options')->with(array('options' => $options, 'default_option'=> 'Выберите город'))->render();
+        return Response::json(array('html' => $html));
+    }
+
+    public function getModels($id)
+    {
+        $options = Brand::find($id)->models;
+        $html = View::make('select_options')->with(array('options' => $options, 'default_option'=> 'Выберите модель'))->render();
+        return Response::json(array('html' => $html));
     }
 }
