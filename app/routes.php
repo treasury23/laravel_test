@@ -29,4 +29,6 @@ Route::any('login', 'RegisterController@showFormLogin');
 
 Route::get('logout', 'RegisterController@logout');
 
+Route::get('getCities/{id}', 'PublicationController@getCities')->where('id', '[0-9]+');
+
 
