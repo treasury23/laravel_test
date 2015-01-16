@@ -12,8 +12,8 @@ class PublicationController extends BaseController {
 
     public function getCities($id)
     {
-        //$cities = City::where('area_id', '=', $id)->get();
-        $cities = Area::find($id)->cities();
-        return Response::json(array('cities' => $cities));
+        $cities = Area::find($id)->cities;
+        $html = View::make('select')->with(array('cities' => $cities));
+        return Response::json(array('html' => json_encode($html)));
     }
 }

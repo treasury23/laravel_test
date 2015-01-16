@@ -6,7 +6,7 @@ $( document ).ready(function() {
             url: '/getCities/'+id,             // указываем URL и
             dataType : "json",                     // тип загружаемых данных
             success: function (data) { // вешаем свой обработчик на функцию success
-                
+
             }
         });
     })
