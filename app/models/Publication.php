@@ -2,6 +2,8 @@
 
 class Publication extends Eloquent {
 
+    public $timestamps = false;
+
     protected $table = 'publications';
 
     public function user()

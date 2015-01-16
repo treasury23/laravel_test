@@ -36,7 +36,7 @@ class RegisterController extends BaseController {
             $user->email = $email;
             $user->password = $password;
             $user->save();
-            return 'SUCCESS';
+            return Redirect::to('add');
             }
         }
         else{

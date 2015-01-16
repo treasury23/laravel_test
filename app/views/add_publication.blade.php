@@ -4,18 +4,18 @@
 @include('errors', array('errors'=>$errors))
 
 <?php
-    $areas = array(0 => 'Выберите область');
+    $areas = array('' => 'Выберите область');
         foreach (Area::get(array('id', 'name')) as $area) {
             $areas[$area->id] = $area->name;
         }
 
-    $brands = array(0 => 'Выберите марку');
+    $brands = array('' => 'Выберите марку');
           foreach (Brand::get(array('id', 'name')) as $brand) {
               $brands[$brand->id] = $brand->name;
           }
 
-    $cities = array(0 => 'Выберите город');
-    $models = array(0 => 'Выберите модель');
+    $cities = array('' => 'Выберите город');
+    $models = array('' => 'Выберите модель');
 
 ?>
 
@@ -39,15 +39,15 @@
         </div>
         <div>
             {{ Form::label('engine', 'Объем двигателя:') }}
-            {{ Form::text('engine', null, array('required' => 'required')) }}
+            {{ Form::text('engine', null, array('required' => 'required', 'maxlength' => 20)) }}
         </div>
         <div>
              {{ Form::label('run', 'Пробег:') }}
-             {{ Form::text('run',null, array('required' => 'required')) }}
+             {{ Form::text('run',null, array('required' => 'required', 'maxlength' => 20)) }}
         </div>
         <div>
              {{ Form::label('owner', 'Ко-во владельцев:') }}
-             {{ Form::text('owner', null, array('required' => 'required')) }}
+             {{ Form::text('owner', null, array('required' => 'required', 'maxlength' => 3)) }}
         </div>
         <div style="padding:20px">{{ Form::submit(Lang::get('messages.submit'), array('class' => 'btn btn-lg btn-primary btn-block')) }}</div>
 
