@@ -19,7 +19,7 @@
 
 ?>
 
-    {{ Form::open(array('url' => 'add')) }}
+    {{ Form::open(array('url' => 'add', 'files' => true)) }}
 
         <div>
             {{ Form::label('area_id', 'Область:') }}
@@ -48,6 +48,10 @@
         <div>
              {{ Form::label('owner', 'Ко-во владельцев:') }}
              {{ Form::text('owner', null, array('required' => 'required', 'maxlength' => 3)) }}
+        </div>
+        <div>
+             {{ Form::label('image', 'Изображение:') }}
+             {{ Form::file('image') }}
         </div>
         <div style="padding:20px">{{ Form::submit(Lang::get('messages.submit'), array('class' => 'btn btn-lg btn-primary btn-block')) }}</div>
 
