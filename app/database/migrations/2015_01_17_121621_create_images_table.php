@@ -14,7 +14,7 @@ class CreateImagesTable extends Migration {
 	{
         Schema::create('images', function ($table) {
             $table->increments('id');
-            $table->string('file_path');
+            $table->string('file_path', 200);
             $table->integer('publication_id')->unsigned();
             $table->foreign('publication_id')->references('id')->on('publications');
         });
