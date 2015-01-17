@@ -2,22 +2,38 @@
 
 class HomeController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
-
-	public function showWelcome()
+	public function showPublication()
 	{
-		return View::make('hello');
-	}
+        if (Request::isMethod('post')) {
+
+
+
+        }else{
+
+        $areas = array('' => 'Выберите область');
+        foreach (Area::get(array('id', 'name')) as $area) {
+            $areas[$area->id] = $area->name;
+        }
+
+        $brands = array('' => 'Выберите марку');
+        foreach (Brand::get(array('id', 'name')) as $brand) {
+            $brands[$brand->id] = $brand->name;
+        }
+
+        $cities = array('' => 'Выберите город');
+        $models = array('' => 'Выберите модель');
+
+        return View::make('home')->with(array('areas' => $areas, 'cities' => $cities, 'brands' => $brands, 'models' => $models));;
+	    }
+    }
+
+    public function search()
+    {
+        $publications = Publication::all();
+        $html = View::make('search')->with(array('publications' => $publications))->render();
+        return Response::json(array('html' => $html));
+        //$engine_from = Input::get('engine_from');
+        //return Response::json(array('engine_from' => $engine_from));
+    }
 
 }

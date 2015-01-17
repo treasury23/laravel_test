@@ -19,7 +19,7 @@
 
 ?>
 
-    {{ Form::open(array('url' => 'add', 'files' => true)) }}
+    {{ Form::open(array('url' => 'add')) }}
 
         <div>
             {{ Form::label('area_id', 'Область:') }}
@@ -51,7 +51,7 @@
         </div>
         <div>
              {{ Form::label('image', 'Изображение:') }}
-             {{ Form::file('image') }}
+             {{ Form::('image', null, array('required' => 'required', 'maxlength' => 3)) }}
         </div>
         <div style="padding:20px">{{ Form::submit(Lang::get('messages.submit'), array('class' => 'btn btn-lg btn-primary btn-block')) }}</div>
 

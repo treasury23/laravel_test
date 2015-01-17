@@ -21,9 +21,9 @@ class Publication extends Eloquent {
         return $this->belongsTo('Model');
     }
 
-    public function image()
+    public function carImage()
     {
-        return $this->hasMany('Image');
+        return $this->hasMany('CarImage');
     }
 
 }

@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::any('/', 'HomeController@showPublication');
 
 Route::any('signup', 'RegisterController@showFormRegister');
 
@@ -32,5 +29,7 @@ Route::get('logout', 'RegisterController@logout');
 Route::get('getCities/{id}', 'PublicationController@getCities')->where('id', '[0-9]+');
 
 Route::get('getModels/{id}', 'PublicationController@getModels')->where('id', '[0-9]+');
+
+Route::any('search', 'HomeController@search');
 
 

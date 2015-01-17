@@ -24,12 +24,27 @@ $( document ).ready(function() {
         }
     });
 
-    $('#brand_id').change(function(e){
+    $('#brand_id').change(function(){
         var id = $(this).val();
         if (id > 0){
             getDataSelect('/getModels/'+id, '#model_id');
         }else{
             $('#model_id option[value]').remove();
         }
+    });
+
+    $('#search-form').submit(function(e){
+        var params  = $(this).serialize();
+        $.ajax({
+            type: 'POST',
+            url: '/search',
+            data: params,
+            success: function(data) {
+                $('#content').html(data.html);
+            },
+            error:  function(){
+                alert('Возникла ошибка');
+            }
+        });
     });
 });

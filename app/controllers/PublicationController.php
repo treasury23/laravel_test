@@ -17,6 +17,7 @@ class PublicationController extends BaseController {
             $owner = Input::get('owner');
             $city = Input::get('city_id');
             $model = Input::get('model_id');
+            $image = Input::file('image');
 
             $validator = Validator::make(
                 array(
@@ -24,7 +25,8 @@ class PublicationController extends BaseController {
                     'run' => $run,
                     'owner' => $owner,
                     'city_id' => $city,
-                    'model_id' => $model
+                    'model_id' => $model,
+                    'image' => $image
 
                 ),
                 array(
@@ -32,7 +34,8 @@ class PublicationController extends BaseController {
                     'run' => 'required|integer|max:10000000',
                     'owner' => 'required|integer|max:100',
                     'city_id' => 'required|integer',
-                    'model_id' => 'required|integer'
+                    'model_id' => 'required|integer',
+                    'image' => 'mimes:jpeg,png'
                 )
             );
 
@@ -40,6 +43,14 @@ class PublicationController extends BaseController {
                 return Redirect::to('add')->withInput()->withErrors($validator);
 
             }else{
+
+                $dir = '/images'.date('/Y/m/d/');
+
+                do {
+                    $filename = str_random(30).'.'.$image->getClientOriginalExtension();
+                } while (File::exists(public_path().$dir.$filename));
+
+                $image->move(public_path().$dir, $filename);
 
                 $city = City::find($city);
                 $model = Model::find($model);
@@ -60,6 +71,10 @@ class PublicationController extends BaseController {
                 $publication->model()->associate($model);
                 $publication->user()->associate(Auth::user());
                 $publication->save();
+
+                $image = new CarImage();
+                $image->file_path = $dir.$filename;
+                $publication->carImage()->save($image);
 
                 return Redirect::to('/');
             }
