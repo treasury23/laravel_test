@@ -2,3 +2,36 @@
     margin: 0 auto;
     width: 200px;
 }
+.public{
+    margin-bottom: 10px;
+}
+
+div#content{
+    margin: 20px auto;
+    width: 500px;
+}
+.form-login{
+    width: 400px;
+    margin: 50px auto;
+}
+.controls{
+    margin-bottom: 10px;
+}
+
+.wrapper{
+    margin: 20px auto;
+    width: 500px;
+}
+.error{
+    color: red;
+}
+
+.input-width{
+    width: 250px;
+}
+.float-left{
+    float:left;
+}
+.submit{
+    padding: 20px 0px;
+}

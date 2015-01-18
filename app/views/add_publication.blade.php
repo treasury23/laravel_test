@@ -19,41 +19,43 @@
 
 ?>
 
-    {{ Form::open(array('url' => 'add')) }}
-
+    {{ Form::open(array('url' => 'add', 'files' => true)) }}
+    <legend>Форма добавления материала</legend>
         <div>
             {{ Form::label('area_id', 'Область:') }}
-            {{ Form::select('area_id', $areas, null, array('required' => 'required')) }}
+            {{ Form::select('area_id', $areas, null, array('required' => 'required', 'class' => 'form-control')) }}
         </div>
         <div>
             {{ Form::label('city_id', 'Город:') }}
-            {{ Form::select('city_id', $cities, null, array('required' => 'required')) }}
+            {{ Form::select('city_id', $cities, null, array('required' => 'required', 'class' => 'form-control')) }}
         </div>
         <div>
             {{ Form::label('brand_id', 'Марка:') }}
-            {{ Form::select('brand_id', $brands, null, array('required' => 'required')) }}
+            {{ Form::select('brand_id', $brands, null, array('required' => 'required', 'class' => 'form-control')) }}
         </div>
         <div>
             {{ Form::label('model_id', 'Модель:') }}
-            {{ Form::select('model_id', $models, null, array('required' => 'required')) }}
+            {{ Form::select('model_id', $models, null, array('required' => 'required', 'class' => 'form-control')) }}
         </div>
-        <div>
             {{ Form::label('engine', 'Объем двигателя:') }}
-            {{ Form::text('engine', null, array('required' => 'required', 'maxlength' => 20)) }}
+        <div class="input-group">
+            {{ Form::text('engine', null, array('required' => 'required', 'maxlength' => 20, 'class' => 'form-control')) }}
+            <div class="input-group-addon">куб.см.</div>
         </div>
         <div>
              {{ Form::label('run', 'Пробег:') }}
-             {{ Form::text('run',null, array('required' => 'required', 'maxlength' => 20)) }}
+        <div class="input-group">
+             {{ Form::text('run',null, array('required' => 'required', 'maxlength' => 20, 'class' => 'form-control')) }}
+             <div class="input-group-addon">км.</div>
         </div>
         <div>
-             {{ Form::label('owner', 'Ко-во владельцев:') }}
-             {{ Form::text('owner', null, array('required' => 'required', 'maxlength' => 3)) }}
+             {{ Form::label('owner', 'Количество владельцев:') }}
+             {{ Form::text('owner', null, array('required' => 'required', 'maxlength' => 3, 'class' => 'form-control')) }}
         </div>
         <div>
              {{ Form::label('image', 'Изображение:') }}
-             {{ Form::('image', null, array('required' => 'required', 'maxlength' => 3)) }}
+             {{ Form::file('image') }}
         </div>
-        <div style="padding:20px">{{ Form::submit(Lang::get('messages.submit'), array('class' => 'btn btn-lg btn-primary btn-block')) }}</div>
-
+        <div class="submit">{{ Form::submit('Добавить', array('class' => 'btn btn-lg btn-primary btn-block')) }}</div>
     {{ Form::close() }}
 @stop

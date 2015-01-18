@@ -12,14 +12,15 @@ class RegisterController extends BaseController {
 
             $validator = Validator::make(
                 array(
-                    'name' => $name,
-                    'email' => $email,
-                    'password' => $password
+                    'Логин' => $name,
+                    'E-mail' => $email,
+                    'Пароль' => $password
                 ),
                 array(
-                    'name' => 'required',
-                    'password' => 'required|min:8',
-                    'email' => 'required|email|unique:users'
+                    'Логин' => 'required',
+                    'E-mail' => 'required|email|unique:users',
+                    'Пароль' => 'required|min:8'
+
                 )
             );
 
@@ -29,7 +30,6 @@ class RegisterController extends BaseController {
             }else{
 
                 $password = Hash::make($password);
-                //$decrypted = Crypt::decrypt($encryptedValue);
 
             $user = new User;
             $user->name = $name;

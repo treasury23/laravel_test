@@ -21,21 +21,21 @@ class PublicationController extends BaseController {
 
             $validator = Validator::make(
                 array(
-                    'engine' => $engine,
-                    'run' => $run,
-                    'owner' => $owner,
+                    'Объем двигателя' => $engine,
+                    'Пробег' => $run,
+                    'Количество владельцев' => $owner,
                     'city_id' => $city,
                     'model_id' => $model,
-                    'image' => $image
+                    'Изображение' => $image
 
                 ),
                 array(
-                    'engine' => 'required|integer|max:100000',
-                    'run' => 'required|integer|max:10000000',
-                    'owner' => 'required|integer|max:100',
+                    'Объем двигателя' => 'required|integer|max:100000',
+                    'Пробег' => 'required|integer|max:10000000',
+                    'Количество владельцев' => 'required|integer|max:100',
                     'city_id' => 'required|integer',
                     'model_id' => 'required|integer',
-                    'image' => 'mimes:jpeg,png'
+                    'Изображение' => 'required|mimes:jpg,png,jpeg'
                 )
             );
 
