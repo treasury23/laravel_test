@@ -5,6 +5,8 @@
 @section('content')
 @include('errors', array('errors'=>$errors))
 
+<a href="/add"><button class="btn btn-lg btn-primary btn-block">Создать публикацию</button></a>
+
 {{ Form::open(array('url' => 'search', 'id' => 'search-form', 'onsubmit' => 'return false')) }}
 <legend>Форма поиска</legend>
         <div>
@@ -27,13 +29,13 @@
             {{ Form::label('engine_from', 'Объем двигателя:') }}
         <div class="input-width">
         <div class="input-group float-left">
-            {{ Form::text('engine_from', null, array('placeholder' => 'от', 'maxlength' => 20, 'class' => 'form-control')) }}
-            <div class="input-group-addon">куб.см.</div>
+            {{ Form::text('engine_from', null, array('placeholder' => 'от', 'maxlength' => 10, 'class' => 'form-control')) }}
+            <div class="input-group-addon">л.</div>
         </div>
         </div>
         <div class="input-group">
-            {{ Form::text('engine_to', null, array('placeholder' => 'до', 'maxlength' => 20, 'class' => 'form-control')) }}
-            <div class="input-group-addon">куб.см.</div>
+            {{ Form::text('engine_to', null, array('placeholder' => 'до', 'maxlength' => 10, 'class' => 'form-control')) }}
+            <div class="input-group-addon">л.</div>
         </div>
             {{ Form::label('run_from', 'Пробег:') }}
         <div class="input-width">

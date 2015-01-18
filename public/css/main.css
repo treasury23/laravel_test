@@ -3,7 +3,7 @@
     width: 200px;
 }
 .public{
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 div#content{
@@ -34,4 +34,7 @@ div#content{
 }
 .submit{
     padding: 20px 0px;
+}
+.car-img{
+    margin-right: 20px;
 }

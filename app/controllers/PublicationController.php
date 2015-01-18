@@ -30,7 +30,7 @@ class PublicationController extends BaseController {
 
                 ),
                 array(
-                    'Объем двигателя' => 'required|integer|max:100000',
+                    'Объем двигателя' => 'required|max:100',
                     'Пробег' => 'required|integer|max:10000000',
                     'Количество владельцев' => 'required|integer|max:100',
                     'city_id' => 'required|integer',

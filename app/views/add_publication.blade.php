@@ -39,8 +39,8 @@
         </div>
             {{ Form::label('engine', 'Объем двигателя:') }}
         <div class="input-group">
-            {{ Form::text('engine', null, array('required' => 'required', 'maxlength' => 20, 'class' => 'form-control')) }}
-            <div class="input-group-addon">куб.см.</div>
+            {{ Form::text('engine', null, array('required' => 'required', 'maxlength' => 10, 'class' => 'form-control')) }}
+            <div class="input-group-addon">л.</div>
         </div>
         <div>
              {{ Form::label('run', 'Пробег:') }}

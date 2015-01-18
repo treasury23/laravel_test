@@ -14,7 +14,7 @@ class CreatePublicationsTable extends Migration {
 	{
         Schema::create('publications', function ($table) {
             $table->increments('id');
-            $table->float('engine');
+            $table->float('engine', 8,1);
             $table->integer('run')->unsigned();
             $table->smallInteger('owner')->unsigned();
             $table->integer('city_id')->unsigned();
