@@ -20,7 +20,7 @@ $( document ).ready(function() {
         if (id > 0){
             getDataSelect('/getCities/'+id, '#city_id');
         }else{
-            $('#city_id option[value]').remove();
+            $('#city_id option[value!=""]').remove();
         }
     });
 
@@ -29,7 +29,7 @@ $( document ).ready(function() {
         if (id > 0){
             getDataSelect('/getModels/'+id, '#model_id');
         }else{
-            $('#model_id option[value]').remove();
+            $('#model_id option[value!=""]').remove();
         }
     });
 

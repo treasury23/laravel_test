@@ -5,6 +5,22 @@
 @section('content')
 @include('errors', array('errors'=>$errors))
 
+<?php
+    $areas = array('' => 'Выберите область');
+        foreach (Area::get(array('id', 'name')) as $area) {
+            $areas[$area->id] = $area->name;
+        }
+
+    $brands = array('' => 'Выберите марку');
+          foreach (Brand::get(array('id', 'name')) as $brand) {
+              $brands[$brand->id] = $brand->name;
+          }
+
+    $cities = array('' => 'Выберите город');
+    $models = array('' => 'Выберите модель');
+
+?>
+
 <a href="/add"><button class="btn btn-danger float-right">Создать публикацию</button></a>
 
 {{ Form::open(array('url' => 'search', 'id' => 'search-form', 'onsubmit' => 'return false')) }}
@@ -52,12 +68,12 @@
         <div class="input-width">
         <div class="input-group float-left">
             {{ Form::text('owner_from', null, array('placeholder' => 'от', 'maxlength' => 3, 'class' => 'form-control')) }}
-        <div class="input-group-addon">км.</div>
+        <div class="input-group-addon"></div>
         </div>
         </div>
         <div class="input-group">
             {{ Form::text('owner_to', null, array('placeholder' => 'до', 'maxlength' => 3, 'class' => 'form-control')) }}
-        <div class="input-group-addon">км.</div>
+        <div class="input-group-addon"></div>
         </div>
 
         <div class="submit">{{ Form::submit(Lang::get('messages.search'), array('class' => 'btn btn-lg btn-primary btn-block', 'id' => 'search')) }}</div>

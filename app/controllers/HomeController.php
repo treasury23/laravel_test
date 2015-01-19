@@ -22,35 +22,49 @@ class HomeController extends BaseController {
 
     public function search()
     {
-        //$area = Input::get('area_id');
+        $area = Input::get('area_id');
         $city = Input::get('city_id');
-        //$brand = Input::get('brand_id');
+        $brand = Input::get('brand_id');
         $model = Input::get('model_id');
-        //$engine_from = Input::get('engine_from');
-        //$engine_to = Input::get('engine_to');
-        $run_from = Input::get('run_form');
+        $engine_from = Input::get('engine_from');
+        $engine_to = Input::get('engine_to');
+        $run_from = Input::get('run_from');
         $run_to = Input::get('run_to');
-        //$owner_from = Input::get('owner_from');
-        //$owner_to = Input::get('owner_to');
+        $owner_from = Input::get('owner_from');
+        $owner_to = Input::get('owner_to');
 
-        //$area = Area::find(Input::get('area_id'));
-        //$city = City::find(Input::get('city_id'));
-        //$model = Model::find($model);
+        $cities_id = [];
+        $models_id = [];
 
+        $areas = Area::find($area);
+        if($areas){$cities = $areas->cities;
+            foreach($cities as $item){
+                $cities_id[] = $item->id;
+            }
+        }
 
+        $brands = Brand::find($brand);
+        if($brands){$models = $brands->models;
+            foreach($models as $item){
+                $models_id[] = $item->id;
+            }
+        }
 
-        //$publications = DB::table('publications')
-        //    ->where('votes', '>', 100)
-        //    ->where('name', 'Джон')
-        //    ->whereBetween('run', array($run_from, $run_to))
-         //   ->orderBy('name', 'desc')
-        //    ->get();
+        $matchThese = [];
 
-        //$publications = Publication::all();
-        $matchThese = ['city_id' => $city, 'model_id' => $model];
-        $publications = Publication::where(['city_id' => $city, 'model_id' => $model])->get();
+        if ($city){$matchThese['city_id'] = $city;}
+        if ($model){$matchThese['model_id'] = $model;}
 
+        $query = Publication::where($matchThese);
 
+        if ($cities_id){$query->whereIn('city_id', $cities_id);}
+        if ($models_id){$query->whereIn('model_id', $models_id);}
+
+        if ($run_from and $run_to){$query->whereBetween('run', array($run_from, $run_to));}
+        if ($engine_from and $engine_to){$query->whereBetween('engine', array($engine_from, $engine_to));}
+        if ($owner_from and $owner_to){$query->whereBetween('owner', array($owner_from, $owner_to));}
+
+        $publications = $query->get();
 
         $html = View::make('search')->with(array('publications' => $publications))->render();
         return Response::json(array('html' => $html));
