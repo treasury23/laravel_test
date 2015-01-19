@@ -6,4 +6,5 @@ return array(
     'email' => 'E-mail',
     'password' => 'Password',
     'submit' => 'Send',
+    'home' => 'Home Page'
 );

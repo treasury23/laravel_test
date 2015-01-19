@@ -1,11 +1,11 @@
 @extends('layout')
 @section('title')
-    {{ trans('messages.title') }}
+    {{ trans('messages.home') }}
 @endsection
 @section('content')
 @include('errors', array('errors'=>$errors))
 
-<a href="/add"><button class="btn btn-lg btn-primary btn-block">Создать публикацию</button></a>
+<a href="/add"><button class="btn btn-danger float-right">Создать публикацию</button></a>
 
 {{ Form::open(array('url' => 'search', 'id' => 'search-form', 'onsubmit' => 'return false')) }}
 <legend>Форма поиска</legend>

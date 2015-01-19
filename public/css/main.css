@@ -38,3 +38,6 @@ div#content{
 .car-img{
     margin-right: 20px;
 }
+.float-right{
+    float: right;
+}

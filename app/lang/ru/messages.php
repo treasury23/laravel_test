@@ -6,5 +6,6 @@ return array(
     'email' => 'E-mail',
     'password' => 'Пароль',
     'submit' => 'Отправить',
-    'search' => 'Поиск'
+    'search' => 'Поиск',
+    'home' => 'Домашняя страница'
 );
