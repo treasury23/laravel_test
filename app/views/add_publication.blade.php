@@ -2,7 +2,11 @@
 @section('content')
 
 @include('errors', array('errors'=>$errors))
+<?php $city= Session::get('city');$model= Session::get('model'); ?>
+<script>$( document ).ready(function() {
 
+_add_publication_js({{$city}})
+});</script>
 <?php
     $areas = array('' => 'Выберите область');
         foreach (Area::get(array('id', 'name')) as $area) {
@@ -57,5 +61,8 @@
              {{ Form::file('image') }}
         </div>
         <div class="submit">{{ Form::submit('Добавить', array('class' => 'btn btn-lg btn-primary btn-block')) }}</div>
+        {{ Form::hidden('ses_city_id','') }}
+        {{ Form::hidden('ses_model_id','') }}
     {{ Form::close() }}
+
 @stop

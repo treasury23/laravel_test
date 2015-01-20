@@ -69,5 +69,4 @@ class HomeController extends BaseController {
         $html = View::make('search')->with(array('publications' => $publications))->render();
         return Response::json(array('html' => $html));
     }
-
 }
