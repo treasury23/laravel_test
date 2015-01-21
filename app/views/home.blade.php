@@ -21,6 +21,12 @@
 
 ?>
 
+@if (Auth::check())
+  <a href="/logout"><button class="btn btn-danger float-left">Выход</button></a>
+@else
+  <a href="/login"><button class="btn btn-danger float-left">Вход</button></a>
+@endif
+
 <a href="/add"><button class="btn btn-danger float-right">Создать публикацию</button></a>
 
 {{ Form::open(array('url' => 'search', 'id' => 'search-form', 'onsubmit' => 'return false')) }}
@@ -75,9 +81,8 @@
             {{ Form::text('owner_to', null, array('placeholder' => 'до', 'maxlength' => 3, 'class' => 'form-control')) }}
         <div class="input-group-addon"></div>
         </div>
-
         <div class="submit">{{ Form::submit(Lang::get('messages.search'), array('class' => 'btn btn-lg btn-primary btn-block', 'id' => 'search')) }}</div>
-
+    {{ Form::hidden('page','') }}
 {{ Form::close() }}
 
 <div id="content"></div>

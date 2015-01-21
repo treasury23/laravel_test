@@ -8,7 +8,7 @@ class PublicationController extends BaseController {
 
             $count = Publication::where('user_id', '=', Auth::user()->id)->count();
 
-            if ($count>=6) {
+            if ($count>=3) {
                 return Redirect::to('add')->withInput()->withErrors(array('Вы больше не можете размещать публикации'));
             }
 

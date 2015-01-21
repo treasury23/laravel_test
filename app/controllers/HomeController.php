@@ -64,7 +64,7 @@ class HomeController extends BaseController {
         if ($engine_from and $engine_to){$query->whereBetween('engine', array($engine_from, $engine_to));}
         if ($owner_from and $owner_to){$query->whereBetween('owner', array($owner_from, $owner_to));}
 
-        $publications = $query->get();
+        $publications = $query->orderBy('id', 'desc')->paginate(10);
 
         $html = View::make('search')->with(array('publications' => $publications))->render();
         return Response::json(array('html' => $html));

@@ -12,8 +12,12 @@
     <div class="controls">
         {{ Form::password('password', array('class' => 'form-control', 'placeholder' => Lang::get('messages.password'))) }}
     </div>
+    <div class="controls">
         {{ Form::submit('Вход', array('class' => 'btn btn-lg btn-primary btn-block')) }}
     </div>
+
 {{ Form::close() }}
+        <a href="/signup"><button class="btn btn-lg btn-primary btn-block">Регистрация</button></a>
+</div>
 </div>
 @stop

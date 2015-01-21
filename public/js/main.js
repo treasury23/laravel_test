@@ -56,9 +56,15 @@ $( document ).ready(function() {
         $('input[name=ses_model_id]').val($(this).val())
     });
 
+    $('body').on('click', 'a[href*="search?page"]', function(e){
+        e.preventDefault();
+        var num = parseInt(e.target.href.replace(/\D+/g,""));
+        $('input[name=page]').val(num);
+        $('#search').click();
+    });
 });
 
-function _add_publication_js(city,model){
+function _add_publication_js(){
     $('#area_id').trigger('change');
     $('#brand_id').trigger('change');
 }

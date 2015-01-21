@@ -1,11 +1,10 @@
 @extends('layout')
+@section('title')
+    {{ trans('messages.add') }}
+@endsection
 @section('content')
-
 @include('errors', array('errors'=>$errors))
-<?php $city= Session::get('city');$model= Session::get('model'); ?>
-<script>$( document ).ready(function() {
-
-_add_publication_js({{$city}})
+<script>$( document ).ready(function() {_add_publication_js()
 });</script>
 <?php
     $areas = array('' => 'Выберите область');

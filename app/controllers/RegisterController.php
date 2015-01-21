@@ -13,12 +13,12 @@ class RegisterController extends BaseController {
             $validator = Validator::make(
                 array(
                     'Логин' => $name,
-                    'E-mail' => $email,
+                    'email' => $email,
                     'Пароль' => $password
                 ),
                 array(
                     'Логин' => 'required',
-                    'E-mail' => 'required|email|unique:users',
+                    'email' => 'required|email|unique:users',
                     'Пароль' => 'required|min:8'
 
                 )
@@ -52,10 +52,10 @@ class RegisterController extends BaseController {
 
             if (Auth::attempt(array('email' => $email, 'password' => $password))) {
 
-                return Redirect::intended('profile');
+                return Redirect::intended('add');
 
             }else{
-                return Redirect::back()->withInput(Input::except('password'))->withErrors(array('Wrong creadentials!'));
+                return Redirect::back()->withInput(Input::except('password'))->withErrors(array('Неверный пароль'));
             }
 
         }else{

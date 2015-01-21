@@ -41,3 +41,6 @@ div#content{
 .float-right{
     float: right;
 }
+.pagination{
+    margin-left: 150px;
+}

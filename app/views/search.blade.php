@@ -37,3 +37,5 @@
 
 @endforeach
 
+<?php echo $publications->links(); ?>
+
